@@ -32,6 +32,7 @@ import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.widget.Button;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -103,6 +104,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   LocationManager locationManager;
   String Provider;
+  static TextView tt;
 
   public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
   private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
@@ -167,6 +169,8 @@ public abstract class CameraActivity extends AppCompatActivity
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
+     tt = findViewById(R.id.desloc);
+
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
@@ -256,27 +260,36 @@ public abstract class CameraActivity extends AppCompatActivity
 
           try {
             addresses = geocoder.getFromLocationName(result.get(0), 1);
+              Log.d("spek", "onActivityResult: "+result.get(0)+" "+addresses);
+
           } catch (IOException e) {
-            e.printStackTrace();
+
           }
-          Address address = addresses.get(0);
           if (addresses.size() > 0) {
             //
 
 
-                  Location location = locationManager.getLastKnownLocation(Provider);
+              Address address = addresses.get(0);
+
+              try {
+                      Location location = locationManager.getLastKnownLocation(Provider);
+                      srclat = location.getLatitude();
+                      srclng = location.getLongitude();
+                      deslat = addresses.get(0).getLatitude();
+                      deslng = addresses.get(0).getLongitude();
+                      String outpi = String.valueOf(srclat) +"  "+ String.valueOf(srclng) +" "+ String.valueOf(deslat) +"  "+ String.valueOf(deslng);
+                      Log.d("geo", "onActivityResult: "+outpi);
+                      String temp ="http://rsquaremap.eu-4.evennode.com/map?srclat="+String.valueOf(srclat)+"&srclon="+String.valueOf(srclng)+"&deslat="+String.valueOf(deslat)+"&deslon="+String.valueOf(deslng);
+                      URL url = new URL(temp);
+                      FetchData fdata = new FetchData();
+                      fdata.execute(url);
 
 
+                  }catch(Exception e){
+
+                  }
 
 
-
-            srclat = location.getLatitude();
-            srclng = location.getLongitude();
-            deslat = addresses.get(0).getLatitude();
-            deslng = addresses.get(0).getLongitude();
-            String outpi = String.valueOf(srclat) + String.valueOf(srclng) + String.valueOf(deslat) + String.valueOf(deslng);
-            TextView tt = (TextView) findViewById(R.id.desloc);
-            tt.setText(outpi);
 
           }
         }

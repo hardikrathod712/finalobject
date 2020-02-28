@@ -1526,6 +1526,7 @@ id ALT
 id CTRL
 id FUNCTION
 id META
+id SCROLLER_ID
 id SHIFT
 id SYM
 id action0
