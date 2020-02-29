@@ -27,8 +27,10 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.Button;
 import java.io.IOException;
@@ -62,6 +64,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
@@ -131,8 +135,12 @@ public abstract class CameraActivity extends AppCompatActivity
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
   private FusedLocationProviderClient client;
+  private AudioManager audioManager;
 
-  @Override
+
+    protected TextToSpeech mTTs;
+
+    @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
     super.onCreate(null);
@@ -149,6 +157,7 @@ public abstract class CameraActivity extends AppCompatActivity
     //Button which is clicked to listen to user and get destination
     btn = (Button) findViewById(R.id.btn);
     btn.setOnClickListener(new View.OnClickListener() {
+      @RequiresApi(api = Build.VERSION_CODES.P)
       @Override
       public void onClick(View v) {
         speak();
@@ -170,6 +179,7 @@ public abstract class CameraActivity extends AppCompatActivity
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
      tt = findViewById(R.id.desloc);
+     audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
@@ -183,7 +193,7 @@ public abstract class CameraActivity extends AppCompatActivity
                   gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
                 //                int width = bottomSheetLayout.getMeasuredWidth();
-                int height = gestureLayout.getMeasuredHeight();
+                int height = 90;
 
                 sheetBehavior.setPeekHeight(height);
               }
@@ -230,6 +240,7 @@ public abstract class CameraActivity extends AppCompatActivity
   }
 
   //Function which converts the speech to text
+  @RequiresApi(api = Build.VERSION_CODES.P)
   private void speak() {
     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -237,7 +248,13 @@ public abstract class CameraActivity extends AppCompatActivity
     intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "speak ");
 
     try {
+        mTTs.speak("sentence",TextToSpeech.QUEUE_FLUSH, null);
+        audioManager.setStreamVolume(
+                AudioManager.STREAM_MUSIC,
+                 3,
+                0);
       startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
+
     } catch (Exception e) {
       Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -263,13 +280,13 @@ public abstract class CameraActivity extends AppCompatActivity
               Log.d("spek", "onActivityResult: "+result.get(0)+" "+addresses);
 
           } catch (IOException e) {
-
+             e.printStackTrace();
+          }catch(Exception e){
+              e.printStackTrace();
           }
           if (addresses.size() > 0) {
             //
 
-
-              Address address = addresses.get(0);
 
               try {
                       Location location = locationManager.getLastKnownLocation(Provider);
@@ -282,11 +299,16 @@ public abstract class CameraActivity extends AppCompatActivity
                       String temp ="http://rsquaremap.eu-4.evennode.com/map?srclat="+String.valueOf(srclat)+"&srclon="+String.valueOf(srclng)+"&deslat="+String.valueOf(deslat)+"&deslon="+String.valueOf(deslng);
                       URL url = new URL(temp);
                       FetchData fdata = new FetchData();
+                       audioManager.setStreamVolume(
+                          AudioManager.STREAM_MUSIC,
+                          audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
+                          0);
+
                       fdata.execute(url);
 
 
                   }catch(Exception e){
-
+                    e.printStackTrace();
                   }
 
 

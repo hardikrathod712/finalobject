@@ -90,7 +90,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   private BorderedText borderedText;
 
   // adding variable mtts
-  private TextToSpeech mTTs;
   //
 
   @Override

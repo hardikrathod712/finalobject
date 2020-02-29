@@ -189,13 +189,13 @@
         android:id="@+id/SCROLLER_ID"
         android:layout_width="fill_parent"
 
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:fillViewport="true">
     <TextView
         android:id="@+id/desloc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="TextView" />
     </ScrollView>
 </LinearLayout>

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\26484601dab0909303900dca8a587491\material-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\1f471142ad75c88212f6dd6ceac7c3e8\play-services-12.0.1\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-cast-framework:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\1e29ffa51da730a1a3ad4873f4533e09\jetified-play-services-cast-framework-12.0.1\AndroidManifest.xml:2:1-14:12
@@ -142,20 +142,20 @@ MERGED from [com.google.android.gms:play-services-vision-common-license:12.0.1] 
 MERGED from [com.google.android.gms:play-services-vision-license:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\dd91a21168e637e97d56834a070498ec\play-services-vision-license-12.0.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-wallet-license:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\58fbf4565654145acae5bb2e6df5eac3\play-services-wallet-license-12.0.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-wearable-license:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\ac1997bd458f369afd82532dbbf73199\play-services-wearable-license-12.0.1\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
-INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
 	package
 		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:2:5-53
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-34:12
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:1-35:12
 		INJECTED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:1:11-69
@@ -489,19 +489,19 @@ ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:8:22-78
 uses-permission#android.permission.CAMERA
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:10:5-65
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:11:5-65
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:10:22-62
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:11:22-62
 uses-feature#android.hardware.camera
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:12:5-60
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:5-60
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:12:19-57
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:5-70
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:14:5-70
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:19-67
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:14:19-67
 application
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:15:5-33:19
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:16:5-34:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\26484601dab0909303900dca8a587491\material-1.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\26484601dab0909303900dca8a587491\material-1.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\1f471142ad75c88212f6dd6ceac7c3e8\play-services-12.0.1\AndroidManifest.xml:5:5-20
@@ -697,35 +697,35 @@ MERGED from [com.google.android.gms:play-services-wearable-license:12.0.1] C:\Us
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.0.0] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\0165520f53928d03ebc727d3b61df4d7\core-1.0.0\AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:20:9-35
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:18:9-41
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:19:9-41
 	android:roundIcon
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:19:9-50
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:20:9-50
 	android:icon
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:17:9-45
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:18:9-45
 	android:allowBackup
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:16:9-36
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:17:9-36
 	android:theme
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:21:9-40
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:22:9-40
 activity#org.tensorflow.lite.examples.detection.DetectorActivity
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:23:9-31:20
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:24:9-32:20
 	android:screenOrientation
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:26:13-49
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:27:13-49
 	android:label
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:25:13-60
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:26:13-60
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:24:13-45
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:25:13-45
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:27:13-30:29
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:30:27-74
 receiver#com.google.android.gms.cast.framework.media.MediaIntentReceiver
 ADDED from [com.google.android.gms:play-services-cast-framework:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\1e29ffa51da730a1a3ad4873f4533e09\jetified-play-services-cast-framework-12.0.1\AndroidManifest.xml:8:9-100
 	android:name

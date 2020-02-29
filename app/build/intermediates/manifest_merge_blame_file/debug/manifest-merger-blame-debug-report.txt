@@ -21,15 +21,15 @@
 13-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:8:5-80
 13-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:8:22-78
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:10:5-65
-14-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:10:22-62
+14-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:11:5-65
+14-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:11:22-62
 15
 16    <uses-feature android:name="android.hardware.camera" />
-16-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:12:5-60
-16-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:12:19-57
+16-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:5-60
+16-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:19-57
 17    <uses-feature android:name="android.hardware.camera.autofocus" />
-17-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:5-70
-17-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:13:19-67
+17-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:14:5-70
+17-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:14:19-67
 18
 19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Optional permission for Analytics to run. -->
 19-->[com.google.android.gms:play-services-ads-lite:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\f08ec8f1f834f920f49033b550bc71cc\jetified-play-services-ads-lite-12.0.1\AndroidManifest.xml:24:5-79
@@ -60,40 +60,40 @@
 31-->[com.google.firebase:firebase-iid:12.0.1] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\92079351d89b0057b409075374fa7347\jetified-firebase-iid-12.0.1\AndroidManifest.xml:32:22-76
 32
 33    <application
-33-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:15:5-33:19
+33-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:16:5-34:19
 34        android:allowBackup="false"
-34-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:16:9-36
+34-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:17:9-36
 35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 35-->[androidx.core:core:1.0.0] C:\Users\SONY\.gradle\caches\transforms-2\files-2.1\0165520f53928d03ebc727d3b61df4d7\core-1.0.0\AndroidManifest.xml:22:18-86
 36        android:debuggable="true"
 37        android:icon="@drawable/ic_launcher"
-37-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:17:9-45
+37-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:18:9-45
 38        android:label="@string/app_name"
-38-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:18:9-41
+38-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:19:9-41
 39        android:roundIcon="@drawable/ic_launcher"
-39-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:19:9-50
+39-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:20:9-50
 40        android:supportsRtl="true"
-40-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:20:9-35
+40-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:21:9-35
 41        android:testOnly="true"
 42        android:theme="@style/AppTheme" >
-42-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:21:9-40
+42-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:22:9-40
 43        <activity
-43-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:23:9-31:20
+43-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:24:9-32:20
 44            android:name="org.tensorflow.lite.examples.detection.DetectorActivity"
-44-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:24:13-45
+44-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:25:13-45
 45            android:label="@string/activity_name_detection"
-45-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:25:13-60
+45-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:26:13-60
 46            android:screenOrientation="portrait" >
-46-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:26:13-49
+46-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:27:13-49
 47            <intent-filter>
-47-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:27:13-30:29
+47-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:13-31:29
 48                <action android:name="android.intent.action.MAIN" />
-48-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:17-69
-48-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:28:25-66
+48-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:17-69
+48-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:25-66
 49
 50                <category android:name="android.intent.category.LAUNCHER" />
-50-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:17-77
-50-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:29:27-74
+50-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:30:17-77
+50-->C:\Projects\finalobject\Object-Detection-master\app\src\main\AndroidManifest.xml:30:27-74
 51            </intent-filter>
 52        </activity>
 53
