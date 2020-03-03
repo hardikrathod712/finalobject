@@ -19,8 +19,10 @@ package org.tensorflow.lite.examples.detection;
 import androidx.annotation.Nullable;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -29,6 +31,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.IBinder;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -103,6 +106,7 @@ public abstract class CameraActivity extends AppCompatActivity
   TextView textView;
   double deslat;
   double deslng;
+
   double srclat;
   double srclng;
 
@@ -136,9 +140,41 @@ public abstract class CameraActivity extends AppCompatActivity
   private TextView threadsTextView;
   private FusedLocationProviderClient client;
   private AudioManager audioManager;
+    TextView distanceTraveled;
+
+    protected  static TextToSpeech mTTs;
+
+    /*
+    Distance calculation in background
+     */
+
+    DistanceTraveledService mDistanceTraveledService;
+    boolean bound = false;
+
+    ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            DistanceTraveledService.DistanceTravelBinder distanceTravelBinder = (DistanceTraveledService.DistanceTravelBinder)service;
+            mDistanceTraveledService = distanceTravelBinder.getBinder();
+            bound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            bound = false;
+        }
+    };
 
 
-    protected TextToSpeech mTTs;
+
+
+
+
+
+
+
+
+
 
     @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -149,7 +185,7 @@ public abstract class CameraActivity extends AppCompatActivity
      checkLocationPermission();
 
 
-     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
      
      Provider = locationManager.getBestProvider(new Criteria(), false);
 
@@ -180,7 +216,7 @@ public abstract class CameraActivity extends AppCompatActivity
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
      tt = findViewById(R.id.desloc);
      audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-
+     distanceTraveled = (TextView)findViewById(R.id.distanceTraveled);
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
@@ -237,9 +273,10 @@ public abstract class CameraActivity extends AppCompatActivity
 
     plusImageView.setOnClickListener(this);
     minusImageView.setOnClickListener(this);
+        displayDistance();
   }
 
-  //Function which converts the speech to text
+    //Function which converts the speech to text
   @RequiresApi(api = Build.VERSION_CODES.P)
   private void speak() {
     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -304,7 +341,10 @@ public abstract class CameraActivity extends AppCompatActivity
                           audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
                           0);
 
+
                       fdata.execute(url);
+
+
 
 
                   }catch(Exception e){
@@ -315,7 +355,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
           }
         }
-        break;
+
     }
   }
 
@@ -450,6 +490,8 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onStart() {
     LOGGER.d("onStart " + this);
     super.onStart();
+      Intent intent = new Intent(this, DistanceTraveledService.class);
+      bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
   }
 
   @Override
@@ -502,6 +544,11 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onStop() {
     LOGGER.d("onStop " + this);
     super.onStop();
+      if(bound){
+          unbindService(mServiceConnection);
+          bound = false;
+      }
+
   }
 
   @Override
@@ -803,9 +850,43 @@ public void onStatusChanged(String provider, int status, Bundle extras) {
 Log.d("Latitude","status");
 }
 
+public void displayDistance() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                double distance = 0;
+                if(mDistanceTraveledService != null){
+                    distance = mDistanceTraveledService.getDistanceTraveled();
+                }
+                distanceTraveled.setText(String.valueOf(distance));
+                handler.postDelayed(this, 5000);
+            }
+        });
+    }
 
 
 
+  public  static void startTracking(ArrayList<String> direc, ArrayList<Float> dist) {
+        DistanceTraveledService.distanceInMetres = 0;
+        final Handler handler = new Handler();
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+              Log.d("direc ", "run: "+direc+" "+dist);
+                if(dist.get(0)+5 <= DistanceTraveledService.distanceInMetres  || DistanceTraveledService.distanceInMetres >= dist.get(0)+5){
+                    mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
+                  mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
+                  mTTs.speak(direc.remove(0), TextToSpeech.QUEUE_ADD,null);
+                  dist.remove(0);
+                }
+
+                handler.postDelayed(this, 2000);
+            }
+        });
+    }
 
 
 

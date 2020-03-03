@@ -1639,6 +1639,7 @@ id design_menu_item_text
 id design_navigation_view
 id desloc
 id disableHome
+id distanceTraveled
 id donate_with
 id donate_with_google
 id edit_query

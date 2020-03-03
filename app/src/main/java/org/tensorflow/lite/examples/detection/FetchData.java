@@ -16,12 +16,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FetchData extends AsyncTask<URL,Void ,String> {
 
      String data;
      String dataparsed;
      String singleParsed;
+
+     // Create two Arraylist dis[in meteres] and direction[left,right,etc ]
+
+    private ArrayList<Float> dist;
+    private ArrayList<String>  direc;
     @Override
     protected String doInBackground(URL... urls) {
       try{
@@ -91,6 +98,9 @@ public class FetchData extends AsyncTask<URL,Void ,String> {
     protected void onPostExecute(String datext) {
         super.onPostExecute(datext);
         Log.d("postex", "onPostExecute: "+data);
+        dist = new ArrayList<Float>();
+        direc = new ArrayList<String>();
+
         try {
             JSONObject json= (JSONObject) new JSONTokener(data).nextValue();
             JSONArray json2 = json.getJSONArray("result");
@@ -98,15 +108,50 @@ public class FetchData extends AsyncTask<URL,Void ,String> {
             for (int i = 0; i < json2.length(); i++) {
                 JSONObject JO = (JSONObject) json2.get(i);
                 singleParsed = JO.get("index") + " Direction: " + JO.get("direction") + "\n" + JO.get("distance") + "\n";
+                String tp[] = String.valueOf(JO.get("direction")).split("\\s+");
+                Log.d("tp", "onPostExecute: "+ Arrays.toString(tp));
+
+                direc.add(tp[0]+" "+tp[1]);
+
+                String dp[] = String.valueOf(JO.get("distance")).split("\\s+");
+                Log.d("dp", "onPostExecute: "+Arrays.toString(dp));
+                float distance=0;
+                if(String.valueOf(JO.get("distance")).contains("k")){
+                    distance = Float.parseFloat(dp[0])*1000;
+                }else{
+                    distance =Float.parseFloat(dp[0]);
+                }
+                dist.add(distance);
+
+
+
                 dataparsed = dataparsed + singleParsed;
             }
 
 
 
             CameraActivity.tt.setText(dataparsed);
+            Log.d("direcarray", "onPostExecute: "+direc);
+            Log.d("distarray", "onPostExecute: "+dist);
+
+
+
+            //
+
+            CameraActivity.startTracking(direc,dist);
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
+
+    ArrayList<Float> getDistance(){
+        return dist;
+    }
+    ArrayList<String> getDirection(){
+        return direc;
+    }
+
 }

@@ -36,12 +36,15 @@
             android:layout_height="517dp"
             android:background="@android:color/transparent"
             android:text="Speak"></Button>
+
     </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="center"
         tools:context="org.tensorflow.demo.CameraActivity">
 
     </FrameLayout>

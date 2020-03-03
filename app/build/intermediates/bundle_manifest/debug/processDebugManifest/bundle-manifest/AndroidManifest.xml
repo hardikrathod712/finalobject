@@ -51,6 +51,12 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="org.tensorflow.lite.examples.detection.DistanceTraveledService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
         <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
 
         <service android:name="com.google.android.gms.cast.framework.media.MediaNotificationService" />
