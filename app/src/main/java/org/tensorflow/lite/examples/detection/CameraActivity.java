@@ -16,13 +16,18 @@
 
 package org.tensorflow.lite.examples.detection;
 
-import androidx.annotation.Nullable;
-
+import android.Manifest;
 import android.app.AlertDialog;
-import android.content.ComponentName;
+import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
+import android.hardware.camera2.params.StreamConfigurationMap;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -30,28 +35,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.AudioManager;
-import android.net.Uri;
-import android.os.IBinder;
-import android.speech.RecognizerIntent;
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
-import android.widget.Button;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-
-import android.Manifest;
-import android.app.Fragment;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.hardware.Camera;
-import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraManager;
-import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.Image.Plane;
 import android.media.ImageReader;
@@ -61,35 +44,41 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.nio.ByteBuffer;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
-import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.net.URL;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 public abstract class CameraActivity extends AppCompatActivity
@@ -141,38 +130,15 @@ public abstract class CameraActivity extends AppCompatActivity
   private FusedLocationProviderClient client;
   private AudioManager audioManager;
     TextView distanceTraveled;
-
+   static TextView displayDirection;
     protected  static TextToSpeech mTTs;
 
     /*
     Distance calculation in background
      */
 
-    DistanceTraveledService mDistanceTraveledService;
-    boolean bound = false;
-
-    ServiceConnection mServiceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            DistanceTraveledService.DistanceTravelBinder distanceTravelBinder = (DistanceTraveledService.DistanceTravelBinder)service;
-            mDistanceTraveledService = distanceTravelBinder.getBinder();
-            bound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            bound = false;
-        }
-    };
-
-
-
-
-
-
-
-
-
+   static   SensorListener mDistanceTraveledService;
+   static double prevDistance;
 
 
 
@@ -184,10 +150,12 @@ public abstract class CameraActivity extends AppCompatActivity
 
      checkLocationPermission();
 
+      startService(new Intent(this, SensorListener.class));
 
+      // register our BroadcastReceiver by passing in an IntentFilter. * identifying the message that is broadcasted by using static string "BROADCAST_ACTION".
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-     
-     Provider = locationManager.getBestProvider(new Criteria(), false);
+
+        Provider = locationManager.getBestProvider(new Criteria(), false);
 
     setContentView(R.layout.activity_camera);
     //Button which is clicked to listen to user and get destination
@@ -217,6 +185,11 @@ public abstract class CameraActivity extends AppCompatActivity
      tt = findViewById(R.id.desloc);
      audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
      distanceTraveled = (TextView)findViewById(R.id.distanceTraveled);
+     displayDirection = (TextView)findViewById(R.id.displayDirection);
+     //  step sensor
+        //
+
+      prevDistance=0;
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
@@ -490,15 +463,14 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onStart() {
     LOGGER.d("onStart " + this);
     super.onStart();
-      Intent intent = new Intent(this, DistanceTraveledService.class);
-      bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+//      sManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_FASTEST);
+
   }
 
   @Override
   public synchronized void onResume() {
     LOGGER.d("onResume " + this);
     super.onResume();
-
 
     if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -519,7 +491,6 @@ public abstract class CameraActivity extends AppCompatActivity
   @Override
   public synchronized void onPause() {
     LOGGER.d("onPause " + this);
-
 
     if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -544,12 +515,7 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onStop() {
     LOGGER.d("onStop " + this);
     super.onStop();
-      if(bound){
-          unbindService(mServiceConnection);
-          bound = false;
-      }
-
-  }
+    }
 
   @Override
   public synchronized void onDestroy() {
@@ -855,12 +821,13 @@ public void displayDistance() {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                double distance = 0;
-                if(mDistanceTraveledService != null){
-                    distance = mDistanceTraveledService.getDistanceTraveled();
-                }
-                distanceTraveled.setText(String.valueOf(distance));
-                handler.postDelayed(this, 5000);
+              float distance=0;
+              if(mDistanceTraveledService != null){
+                distance = mDistanceTraveledService.getDistanceRun();
+              }
+
+                distanceTraveled.setText(String.valueOf(mDistanceTraveledService.getDistanceRun()));
+                handler.postDelayed(this, 1500);
             }
         });
     }
@@ -868,7 +835,6 @@ public void displayDistance() {
 
 
   public  static void startTracking(ArrayList<String> direc, ArrayList<Float> dist) {
-        DistanceTraveledService.distanceInMetres = 0;
         final Handler handler = new Handler();
 
         handler.post(new Runnable() {
@@ -876,67 +842,21 @@ public void displayDistance() {
             public void run() {
 
               Log.d("direc ", "run: "+direc+" "+dist);
-                if(dist.get(0)+5 <= DistanceTraveledService.distanceInMetres  || DistanceTraveledService.distanceInMetres >= dist.get(0)+5){
+                if(dist.size()>0 &&(dist.get(0)+5 <= mDistanceTraveledService.getDistanceRun()  || mDistanceTraveledService.getDistanceRun() >= dist.get(0)+5)){
+                    mTTs.speak("sentence",TextToSpeech.QUEUE_FLUSH,null);
                     mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
                   mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
+                    displayDirection.setText(direc.get(0));
                   mTTs.speak(direc.remove(0), TextToSpeech.QUEUE_ADD,null);
-                  dist.remove(0);
+
+                    prevDistance+=dist.remove(0);
                 }
 
-                handler.postDelayed(this, 2000);
+                handler.postDelayed(this, 3000);
             }
         });
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+

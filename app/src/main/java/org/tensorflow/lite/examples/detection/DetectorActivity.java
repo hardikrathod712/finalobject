@@ -231,7 +231,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
             for (final Classifier.Recognition result : results) {
               final RectF location = result.getLocation();
-              if (location != null && result.getConfidence() >= 0.55) {
+              if (location != null && result.getConfidence() >= 0.65) {
                 canvas.drawRect(location, paint);
 
                 cropToFrameTransform.mapRect(location);

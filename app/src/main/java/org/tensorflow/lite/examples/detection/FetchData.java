@@ -2,7 +2,6 @@ package org.tensorflow.lite.examples.detection;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -137,7 +136,7 @@ public class FetchData extends AsyncTask<URL,Void ,String> {
 
 
             //
-
+            SensorListener.newStepCounter=0;
             CameraActivity.startTracking(direc,dist);
 
 

@@ -193,6 +193,14 @@
         android:textColor="#FF0000"
         android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/displayDirection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:textSize="20dp"
+        android:text="TextView" />
+
     <ScrollView
         android:id="@+id/SCROLLER_ID"
         android:layout_width="fill_parent"
