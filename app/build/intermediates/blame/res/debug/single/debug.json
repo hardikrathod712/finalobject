@@ -920,6 +920,10 @@
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\34e44c6ca36ed7b515b751d6cacb3caa\\mediarouter-1.0.0-alpha5\\res\\drawable-xhdpi-v4\\ic_vol_type_speaker_group_light.png"
     },
     {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_media_stop_dark.png.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\34e44c6ca36ed7b515b751d6cacb3caa\\mediarouter-1.0.0-alpha5\\res\\drawable-xxhdpi-v4\\ic_media_stop_dark.png"
     },
@@ -1120,6 +1124,10 @@
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\dd2d4cd6265349467cb230c88b6d3c6c\\appcompat-1.0.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_app_icon_new.jpg.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\drawable\\app_icon_new.jpg"
+    },
+    {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\dd2d4cd6265349467cb230c88b6d3c6c\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
@@ -1246,6 +1254,10 @@
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_mr_button_connected_02_dark.png.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\34e44c6ca36ed7b515b751d6cacb3caa\\mediarouter-1.0.0-alpha5\\res\\drawable-xxhdpi-v4\\ic_mr_button_connected_02_dark.png"
+    },
+    {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_mr_button_connected_23_dark.png.flat",
@@ -1630,6 +1642,10 @@
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_powered_by_google_dark.png.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\f710b5fa51b8fdedab202d3bc8ab85aa\\jetified-play-services-places-12.0.1\\res\\drawable-hdpi-v4\\powered_by_google_dark.png"
+    },
+    {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -2678,6 +2694,10 @@
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_tick_mark_material.xml.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\dd2d4cd6265349467cb230c88b6d3c6c\\appcompat-1.0.0\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -4630,6 +4650,10 @@
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_color_highlight_material.xml.flat",
         "source": "C:\\Users\\SONY\\.gradle\\caches\\transforms-2\\files-2.1\\dd2d4cd6265349467cb230c88b6d3c6c\\appcompat-1.0.0\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_mr_button_connecting_05_dark.png.flat",

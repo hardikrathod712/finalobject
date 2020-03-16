@@ -137,6 +137,9 @@ public class FetchData extends AsyncTask<URL,Void ,String> {
 
             //
             SensorListener.newStepCounter=0;
+            SensorListener.stepCounter=0;
+            SensorListener.currentStepsDetected=0;
+
             CameraActivity.startTracking(direc,dist);
 
 
