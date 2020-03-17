@@ -1,4 +1,4 @@
-#Mon Mar 16 21:17:39 IST 2020
+#Tue Mar 17 08:24:44 IST 2020
 base.0=C\:\\Projects\\finalobject\\Object-Detection-master\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
 path.1=classes2.dex
 renamed.1=classes2.dex

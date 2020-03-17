@@ -842,12 +842,21 @@ public void displayDistance() {
             public void run() {
 
               Log.d("direc ", "run: "+direc+" "+dist);
-                if(dist.size()>0 &&(dist.get(0)+5 <= mDistanceTraveledService.getDistanceRun()  || mDistanceTraveledService.getDistanceRun() >= dist.get(0)+5)){
-                    mTTs.speak("sentence",TextToSpeech.QUEUE_FLUSH,null);
-                    mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
-                  mTTs.speak(direc.get(0), TextToSpeech.QUEUE_ADD,null);
+              if(mDistanceTraveledService.getDistanceRun()<=3 && displayDirection.getText().toString().equals("TextView")){
+                 // mTTs.speak("sentence",TextToSpeech.QUEUE_FLUSH,null,null);
+                  mTTs.speak(direc.get(0), TextToSpeech.QUEUE_FLUSH,null,null);
+                  mTTs.speak(direc.get(0), TextToSpeech.QUEUE_FLUSH,null,null);
+                  displayDirection.setText(direc.get(0));
+                  mTTs.speak(direc.remove(0), TextToSpeech.QUEUE_FLUSH,null,null);
+
+
+              }
+                if(dist.size()>0&& direc.size()>0 &&(prevDistance+dist.get(0)-3 <= mDistanceTraveledService.getDistanceRun()  || mDistanceTraveledService.getDistanceRun() >= prevDistance+dist.get(0)+3)){
+                    mTTs.speak("sentence",TextToSpeech.QUEUE_FLUSH,null,null);
+                    mTTs.speak(direc.get(0), TextToSpeech.QUEUE_FLUSH,null,null);
+                  mTTs.speak(direc.get(0), TextToSpeech.QUEUE_FLUSH,null,null);
                     displayDirection.setText(direc.get(0));
-                  mTTs.speak(direc.remove(0), TextToSpeech.QUEUE_ADD,null);
+                  mTTs.speak(direc.remove(0), TextToSpeech.QUEUE_FLUSH,null,null);
 
                     prevDistance+=dist.remove(0);
                 }

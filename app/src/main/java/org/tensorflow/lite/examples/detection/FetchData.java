@@ -134,7 +134,7 @@ public class FetchData extends AsyncTask<URL,Void ,String> {
             Log.d("distarray", "onPostExecute: "+dist);
 
 
-
+             direc.add("Destination  Reached");
             //
             SensorListener.newStepCounter=0;
             SensorListener.stepCounter=0;

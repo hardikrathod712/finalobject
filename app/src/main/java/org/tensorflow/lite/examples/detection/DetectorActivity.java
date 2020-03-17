@@ -34,10 +34,6 @@ import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 
 import org.tensorflow.lite.examples.detection.customview.OverlayView;
 import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallback;
@@ -47,6 +43,11 @@ import org.tensorflow.lite.examples.detection.env.Logger;
 import org.tensorflow.lite.examples.detection.tflite.Classifier;
 import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
 import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
+
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track
@@ -286,7 +287,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
 
-                mTTs.speak(result.getTitle()+Extra, TextToSpeech.QUEUE_ADD,null);
+                mTTs.speak(result.getTitle()+Extra, TextToSpeech.QUEUE_FLUSH,null,null);
 
 
 
